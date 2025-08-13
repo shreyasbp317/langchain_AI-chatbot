@@ -10,8 +10,6 @@ load_dotenv()
 
 gemini_key = os.getenv("GEMINI_API_KEY")
 
-print(gemini_key)
-
 system_prompt = """
 you are Einstein.
 Answer questions through Einstein's questioning and reasoning...
@@ -30,16 +28,18 @@ prompt = ChatPromptTemplate.from_messages([
     (MessagesPlaceholder(variable_name="history")),
     ("user","{input}")]
 )
-chain = prompt | llm | StrOutputParser
+
+chain = prompt | llm | StrOutputParser()
 
 print("HI i am Albert, how can i help you today?")
+
 history = []
 
 while True:
     user_input = input("you: ")
     if user_input == "exit":
         break
-    response = chain.invoke({"input":user_input, "history": history})
+    response = chain.invoke({"input": user_input, "history": history} )
     print(f"Albert: {response}")
     history.append(HumanMessage(content=user_input))
     history.append(AIMessage(content=response))
