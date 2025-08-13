@@ -25,12 +25,12 @@ response = llm.invoke([{"role":"user","content": system_prompt},
                        {"role":"user","content": "Hi there, how are you?"}])
 print(response.content)
 
-with open("file.txt") as file:
-    content = file.read()
-#
-#print("HI, How are you, hope you are doing well")
-#while True:
-#    user_input = input("you: ")
-#    if user_input == "exit":
-#        break
-#    print(f"cool, thanks for sharing that {user_input}")
+
+print("HI, How are you, hope you are doing well")
+while True:
+    user_input = input("you: ")
+    if user_input == "exit":
+        break
+    response = llm.invoke([{"role":"user","content": system_prompt},
+                           {"role":"user","content": user_input}])
+    print(f"Albert: {response.content}")
