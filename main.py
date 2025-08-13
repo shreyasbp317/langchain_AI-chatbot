@@ -21,7 +21,8 @@ llm = ChatGoogleGenerativeAI(
     temperature=0.5
 )
 
-response = llm.invoke([{"role":"user","content":"Hi there,how are you?"}])
+response = llm.invoke([{"role":"user","content": system_prompt + user_input},
+                       {"role":"user","content": "Hi there, how are you?"}])
 print(response.content)
 
 with open("file.txt") as file:
