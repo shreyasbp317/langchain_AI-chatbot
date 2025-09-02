@@ -27,7 +27,7 @@ DETAIL: <long detailed explanation here>
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
     google_api_key=gemini_key,
-    temperature=0.5
+    temperature = 0.5
 )
 
 # LangChain pipeline
